@@ -1,0 +1,415 @@
+/* ========================================
+   WORKOUT CALENDAR PAGE
+   ======================================== */
+
+.workout-calendar-page {
+  min-height: 100vh;
+  background: var(--lifty-bg-main);
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+.calendar-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ========== HEADER ========== */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.calendar-page-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.calendar-page-title svg {
+  flex-shrink: 0;
+  color: var(--lifty-accent-main);
+  stroke: var(--lifty-accent-main);
+}
+
+/* ========== STATS CARDS ========== */
+.calendar-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--lifty-bg-card);
+  border: 1px solid var(--lifty-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--lifty-shadow-card);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--lifty-shadow-card-hover);
+  border-color: rgba(120, 130, 182, 0.3);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(120, 130, 182, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lifty-accent-main);
+  flex-shrink: 0;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.stat-value {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--lifty-text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--lifty-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* ========== CALENDAR NAVIGATION ========== */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  background: var(--lifty-bg-card);
+  border: 1px solid var(--lifty-border);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: var(--lifty-shadow-card);
+}
+
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(120, 130, 182, 0.1);
+  border: 1px solid rgba(120, 130, 182, 0.2);
+  color: var(--lifty-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: var(--lifty-accent-main);
+  border-color: var(--lifty-accent-main);
+  color: white;
+  transform: scale(1.05);
+}
+
+.current-month {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--lifty-text-primary);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ========== CALENDAR GRID ========== */
+.calendar-wrapper {
+  background: var(--lifty-bg-card);
+  border: 1px solid var(--lifty-border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--lifty-shadow-card);
+  overflow: hidden;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.weekday-label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--lifty-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: var(--lifty-bg-main);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: default;
+  transition: all 0.3s ease;
+  min-height: 45px;
+  max-width: 100%;
+}
+
+.calendar-day.empty {
+  background: transparent;
+  border: none;
+}
+
+.calendar-day.today {
+  border-color: var(--lifty-accent-main);
+  background: rgba(120, 130, 182, 0.05);
+}
+
+.calendar-day.has-workout {
+  background: linear-gradient(
+    135deg,
+    rgba(120, 130, 182, 0.15) 0%,
+    rgba(120, 130, 182, 0.08) 100%
+  );
+  border-color: rgba(120, 130, 182, 0.3);
+}
+
+.calendar-day.has-workout.today {
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    rgba(120, 130, 182, 0.8) 100%
+  );
+  border-color: var(--lifty-accent-main);
+}
+
+.calendar-day.has-workout.today .day-number {
+  color: white;
+}
+
+.calendar-day:hover:not(.empty) {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.2);
+}
+
+.day-number {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lifty-text-primary);
+  margin-bottom: 4px;
+}
+
+.workout-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lifty-accent-main);
+  margin-top: 2px;
+}
+
+.calendar-day.has-workout.today .workout-indicator {
+  color: white;
+}
+
+/* ========== LEGEND ========== */
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--lifty-bg-card);
+  border: 1px solid var(--lifty-border);
+  border-radius: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--lifty-text-secondary);
+  font-weight: 600;
+}
+
+.legend-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.today-indicator {
+  background: rgba(120, 130, 182, 0.05);
+  border: 2px solid var(--lifty-accent-main);
+}
+
+.workout-indicator-legend {
+  background: linear-gradient(
+    135deg,
+    rgba(120, 130, 182, 0.15) 0%,
+    rgba(120, 130, 182, 0.08) 100%
+  );
+  border: 2px solid rgba(120, 130, 182, 0.3);
+  color: var(--lifty-accent-main);
+}
+
+/* ========== LOADING ========== */
+.calendar-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(120, 130, 182, 0.1);
+  border-top-color: var(--lifty-accent-main);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.calendar-loading p {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .calendar-page-title {
+    font-size: 22px;
+  }
+
+  .calendar-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .current-month {
+    font-size: 20px;
+  }
+
+  .calendar-wrapper {
+    padding: 16px;
+  }
+
+  .calendar-day {
+    min-height: 50px;
+  }
+
+  .day-number {
+    font-size: 14px;
+  }
+
+  .workout-indicator {
+    display: none;
+  }
+
+  .calendar-day.has-workout::after {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    width: 6px;
+    height: 6px;
+    background: var(--lifty-accent-main);
+    border-radius: 50%;
+  }
+
+  .calendar-day.has-workout.today::after {
+    background: white;
+  }
+
+  .calendar-legend {
+    flex-direction: row;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .workout-calendar-page {
+    padding: 16px;
+  }
+
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .calendar-page-title {
+    font-size: 20px;
+  }
+
+  .calendar-day {
+    min-height: 45px;
+  }
+
+  .day-number {
+    font-size: 13px;
+  }
+
+  .weekday-label {
+    font-size: 11px;
+  }
+}

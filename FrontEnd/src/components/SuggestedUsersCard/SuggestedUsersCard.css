@@ -1,0 +1,205 @@
+/* Suggested Users section aligned with Lifty design tokens */
+.suggested-users-card {
+  padding: 24px;
+  margin-bottom: 40px;
+  cursor: default;
+}
+
+.suggested-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(120, 130, 182, 0.08);
+}
+
+.suggested-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--lifty-text-primary);
+  margin: 0;
+}
+
+.suggested-count {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--lifty-text-secondary);
+}
+
+.suggested-loading {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--lifty-text-secondary);
+  font-size: 0.9rem;
+}
+
+.suggested-users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.suggested-user-item {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 14px;
+  row-gap: 0;
+  padding: 16px;
+  cursor: default;
+  overflow: visible;
+  align-items: center;
+}
+
+/* Remove the accent bar from lifty-card */
+.suggested-user-item::before {
+  display: none;
+}
+
+.suggested-user-item:hover {
+  transform: translateY(-3px);
+}
+
+.suggested-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(120, 130, 182, 0.2);
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.suggested-avatar:hover {
+  border-color: var(--lifty-accent-main);
+  transform: scale(1.04);
+}
+
+.suggested-info {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  text-align: left;
+  align-self: center;
+}
+
+.suggested-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--lifty-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.suggested-name:hover {
+  color: var(--lifty-accent-main);
+}
+
+.suggested-username {
+  font-size: 0.85rem;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.suggested-meta {
+  font-size: 0.75rem;
+  color: var(--lifty-text-tertiary);
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.suggested-follow-btn {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  align-self: end;
+  justify-self: end;
+  min-width: auto;
+  width: auto;
+  padding: 7px 16px;
+  min-height: 34px;
+  font-size: 0.85rem;
+  background: var(--lifty-bg-card);
+  color: var(--lifty-text-primary);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.suggested-follow-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.suggested-follow-btn.follow {
+  background: var(--lifty-bg-card);
+  color: var(--lifty-text-primary);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+}
+
+@media (hover: hover) {
+  .suggested-follow-btn.follow:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+    border-color: var(--lifty-accent-main);
+    background: var(--lifty-bg-hover);
+  }
+}
+
+.suggested-follow-btn.following {
+  background: transparent;
+  color: var(--lifty-text-primary);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  .suggested-follow-btn.following:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+.suggested-follow-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.suggested-follow-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .suggested-users-card {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,316 @@
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+.resultContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: linear-gradient(135deg, #0f0f11 0%, #1a1a1e 50%, #16161a 100%);
+  overflow-x: hidden;
+}
+
+/* ============================================
+   PORTADA - IDÉNTICA A WELCOMESCREEN
+   ============================================ */
+.coverContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentBox {
+  z-index: 2;
+  text-align: center;
+  padding: var(--lt-spacing-2xl);
+  max-width: 800px;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Logo en portada - mismo tamaño que WelcomeScreen */
+.coverContainer :global(.logo-container) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--lt-spacing-2xl) 0;
+}
+
+.coverContainer :global(.logo-main) {
+  width: 500px;
+  height: auto;
+  max-width: 90vw;
+}
+
+/* ============================================
+   SECCIÓN DE RECOMENDACIONES
+   ============================================ */
+.recommendationsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--lt-spacing-2xl);
+  gap: var(--lt-spacing-2xl);
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 2;
+}
+
+/* ============================================
+   MOTIVATIONAL CARDS
+   ============================================ */
+.motivationalCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--lt-spacing-lg);
+  width: 100%;
+  z-index: 2;
+}
+
+.motivCard {
+  background: var(--lt-bg-card);
+  border: 1px solid rgba(120, 130, 182, 0.08);
+  border-radius: 16px;
+  padding: var(--lt-spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--lt-spacing-md);
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(22, 21, 47, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 220px;
+}
+
+.motivCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(22, 21, 47, 0.12);
+  border-color: rgba(120, 130, 182, 0.3);
+}
+
+.motivCard p {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+  color: var(--lt-text-secondary);
+}
+
+.cardHighlight {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--lt-accent-color);
+  margin-top: 0.5rem;
+}
+
+/* Card animations with stagger */
+.animCard1 {
+  animation: slideInFromLeft 0.6s ease-out;
+}
+
+.animCard2 {
+  animation: slideInFromRight 0.6s ease-out 0.1s backwards;
+}
+
+.animCard3 {
+  animation: slideInFromLeft 0.6s ease-out 0.2s backwards;
+}
+
+.animCard4 {
+  animation: slideInFromRight 0.6s ease-out 0.3s backwards;
+}
+
+/* ============================================
+   PROFILE CARD
+   ============================================ */
+.profileCard {
+  background: var(--lt-bg-card);
+  border: 1px solid rgba(120, 130, 182, 0.08);
+  border-radius: 16px;
+  padding: var(--lt-spacing-xl);
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(22, 21, 47, 0.06);
+  z-index: 2;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--lt-spacing-md);
+}
+
+.profileItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--lt-spacing-sm);
+  padding: var(--lt-spacing-lg);
+  background: var(--lt-bg-input);
+  border: 1px solid rgba(120, 130, 182, 0.15);
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(22, 21, 47, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profileItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(22, 21, 47, 0.12);
+  border-color: rgba(120, 130, 182, 0.3);
+}
+
+.profileItem svg {
+  color: var(--lt-accent-color);
+  flex-shrink: 0;
+}
+
+.profileItem span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--lt-text-secondary);
+}
+
+.profileItem strong {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--lt-text-primary);
+}
+
+/* ============================================
+   TEXT SECTION
+   ============================================ */
+.textSection {
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  padding: var(--lt-spacing-xl);
+  background: var(--lt-bg-card);
+  border: 1px solid rgba(120, 130, 182, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(22, 21, 47, 0.06);
+}
+
+.sectionText {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--lt-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.sectionText strong {
+  color: var(--lt-text-primary);
+  font-weight: 700;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Desktop - Limitar tamaños máximos */
+@media (min-width: 1200px) {
+  .recommendationsSection {
+    max-width: 1000px;
+    padding: var(--lt-spacing-3xl);
+  }
+
+  .motivationalCards {
+    max-width: 1000px;
+    gap: var(--lt-spacing-xl);
+  }
+
+  .cardHighlight {
+    font-size: 1.75rem;
+  }
+
+  .profileCard {
+    max-width: 1000px;
+  }
+
+  .textSection {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .contentBox {
+    padding: var(--lt-spacing-lg);
+  }
+
+  .recommendationsSection {
+    padding: var(--lt-spacing-lg);
+  }
+
+  .motivationalCards {
+    grid-template-columns: 1fr;
+    gap: var(--lt-spacing-md);
+  }
+
+  .profileGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionText {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentBox {
+    padding: var(--lt-spacing-md);
+  }
+
+  .recommendationsSection {
+    padding: var(--lt-spacing-md);
+  }
+
+  .motivCard {
+    padding: var(--lt-spacing-md);
+  }
+
+  .profileCard {
+    padding: var(--lt-spacing-lg);
+  }
+}

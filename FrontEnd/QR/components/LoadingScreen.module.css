@@ -1,0 +1,164 @@
+/* Pantalla de carga */
+.loadingScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  width: 100%;
+  max-width: 700px;
+  padding: var(--lt-spacing-2xl);
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loadingContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--lt-spacing-xl);
+}
+
+.spinnerWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Spinner centrado con estilo gradient */
+.spinner {
+  animation: spin 1s linear infinite;
+  stroke: var(--lt-accent-color);
+  color: var(--lt-accent-color);
+  filter: drop-shadow(0 0 16px rgba(120, 130, 182, 0.45));
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animaciones para icono y texto */
+.loadingIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  animation: fadeInOutCycle 1.5s ease-in-out;
+}
+
+.loadingText {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeInOutCycle 1.5s ease-in-out;
+  /* Altura fija para 3 líneas de texto */
+  min-height: calc(1.75rem * 1.4 * 3);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeInOutCycle {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   CONTENEDOR FIJO PARA MASCOTA EN LOADING
+   ============================================ */
+.loadingAnalysisWrapper :global(.logo-container) {
+  min-height: 350px;
+  max-height: 350px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loadingAnalysisWrapper :global(.logo-main) {
+  width: auto !important;
+  max-width: 350px;
+  max-height: 350px;
+  height: auto;
+  object-fit: contain;
+  animation: fadeIn 0.5s ease-in-out !important;
+}
+
+/* Responsive */
+
+/* Desktop - Limitar tamaños máximos */
+@media (min-width: 1200px) {
+  .loadingScreen {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .loadingText {
+    font-size: 1.75rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .loadingAnalysisWrapper :global(.logo-main) {
+    max-width: 350px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .loadingScreen {
+    min-height: 400px;
+  }
+
+  .loadingText {
+    font-size: 1.5rem;
+    min-height: calc(1.5rem * 1.4 * 3);
+  }
+
+  .spinner {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loadingScreen {
+    min-height: 350px;
+  }
+
+  .loadingText {
+    font-size: 1.25rem;
+    min-height: calc(1.25rem * 1.4 * 3);
+  }
+
+  .spinner {
+    width: 56px;
+    height: 56px;
+  }
+}

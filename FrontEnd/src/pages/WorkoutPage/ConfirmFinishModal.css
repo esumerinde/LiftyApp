@@ -1,0 +1,169 @@
+/* ========================================
+   CONFIRM FINISH MODAL
+   Modal de confirmación para finalizar entrenamiento
+   ======================================== */
+
+.cfm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: cfm-fadeIn 0.2s ease-out;
+}
+
+@keyframes cfm-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cfm-modal-content {
+  background: var(--lifty-bg-card, #1a1d2e);
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: cfm-slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes cfm-slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cfm-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--lifty-text-main, #e4e6eb);
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.cfm-incomplete-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.cfm-incomplete-item {
+  padding: 10px 16px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  color: var(--lifty-text-secondary, #b8bac3);
+  font-size: 0.95rem;
+  border-left: 3px solid var(--lifty-accent-main, #7882b6);
+  text-align: left;
+}
+
+.cfm-incomplete-item::before {
+  content: "• ";
+  color: var(--lifty-accent-main, #7882b6);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.cfm-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cfm-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cfm-btn-primary {
+  background: white;
+  color: #1a1d2e;
+}
+
+.cfm-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.cfm-btn-secondary {
+  background: transparent;
+  color: var(--lifty-text-main, #e4e6eb);
+  border: 2px solid var(--lifty-border, #2a2d3e);
+}
+
+.cfm-btn-secondary:hover {
+  border-color: var(--lifty-accent-main, #7882b6);
+  color: var(--lifty-accent-main, #7882b6);
+  transform: translateY(-2px);
+}
+
+.cfm-btn:active {
+  transform: scale(0.98);
+}
+
+/* Scrollbar para lista de ejercicios */
+.cfm-incomplete-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cfm-incomplete-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.cfm-incomplete-list::-webkit-scrollbar-thumb {
+  background: var(--lifty-accent-main, #7882b6);
+  border-radius: 10px;
+}
+
+.cfm-incomplete-list::-webkit-scrollbar-thumb:hover {
+  background: var(--lifty-accent-hover, #8891c4);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .cfm-modal-content {
+    padding: 24px 20px;
+  }
+
+  .cfm-title {
+    font-size: 1rem;
+  }
+
+  .cfm-incomplete-item {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .cfm-btn {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+}

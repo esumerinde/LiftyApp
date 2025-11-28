@@ -1,0 +1,162 @@
+/* Paso 5: Objetivo - Lluvia de íconos de objetivos */
+
+.formStep {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--lt-spacing-sm);
+  padding-bottom: var(--lt-spacing-xl);
+}
+
+/* Header */
+.stepHeader {
+  text-align: center;
+  margin-bottom: var(--lt-spacing-md);
+}
+
+.stepQuestion {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 var(--lt-spacing-sm) 0;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  text-align: center;
+  filter: drop-shadow(0 2px 8px rgba(120, 130, 182, 0.4));
+}
+
+/* Sub-pregunta */
+.subQuestion {
+  font-size: 1.2rem;
+  font-weight: var(--lt-font-weight-medium);
+  filter: drop-shadow(0 2px 8px rgba(120, 130, 182, 0.4));
+  text-align: center;
+  margin: 2rem 0 var(--lt-spacing-sm) 0;
+}
+
+/* Contenedor para imágenes rotativas */
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: var(--lt-spacing-sm) auto;
+  width: 280px;
+  max-width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: visible;
+}
+
+.rotatingImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: imageFade 5s ease-in-out infinite;
+}
+
+/* Animación igual que motivationalFade pero para imágenes */
+@keyframes imageFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  92% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Campos y botones */
+.fieldGroup {
+  margin-top: var(--lt-spacing-2xl);
+  margin-bottom: var(--lt-spacing-2xl);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.radioLabel {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.radioLabel input[type="radio"] {
+  display: none;
+}
+
+/* Contenido del botón */
+.optionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: center;
+}
+
+.optionContent strong {
+  font-size: 1.15rem;
+  font-weight: var(--lt-font-weight-bold);
+}
+
+.optionDesc {
+  font-size: 0.9rem;
+  font-weight: var(--lt-font-weight-normal);
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* Placeholder temporal */
+.placeholderText {
+  text-align: center;
+  padding: 2rem;
+  color: var(--lt-text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .imageContainer {
+    width: 240px;
+    height: 240px;
+  }
+
+  .optionContent strong {
+    font-size: 1.1rem;
+  }
+
+  .optionDesc {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepQuestion {
+    font-size: 1.3rem;
+  }
+
+  .imageContainer {
+    width: 220px;
+    height: 220px;
+  }
+
+  .optionContent strong {
+    font-size: 1rem;
+  }
+
+  .optionDesc {
+    font-size: 0.8rem;
+  }
+}

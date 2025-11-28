@@ -1,0 +1,138 @@
+﻿/* ========================================
+   WORKOUT PAGE ALL EXERCISES MODAL
+   Usa las clases globales de AllExercises (.lifty-*)
+   Solo estilos adicionales para modal y selección
+   ======================================== */
+
+/* Modal container - fullscreen sin overlay blur */
+.wpae-modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--lifty-bg-main);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  animation: wpae-slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes wpae-slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Contenido scrollable */
+.wpae-modal-container .lifty-exercises-page {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 120px; /* Espacio para el footer */
+}
+
+/* Botón cerrar en header */
+.wpae-close-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--lifty-bg-card);
+  border: 2px solid var(--lifty-border);
+  color: var(--lifty-accent-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.wpae-close-btn:hover {
+  transform: translateX(-4px);
+  border-color: var(--lifty-accent-main);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.2);
+}
+
+/* Wrapper para exercise cards con selección */
+.wpae-exercise-card-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Efecto de selección en la card */
+.wpae-exercise-card-wrapper.selected .lifty-diet-card {
+  border-color: var(--lifty-accent-main);
+  box-shadow: 0 0 0 3px rgba(120, 130, 182, 0.2),
+    0 8px 24px rgba(120, 130, 182, 0.3);
+  transform: scale(0.98);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Checkmark de selección */
+.wpae-selected-check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 28px;
+  height: 28px;
+  background: var(--lifty-accent-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.4);
+  animation: wpae-checkPop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes wpae-checkPop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Footer con botón añadir */
+.wpae-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: var(--lifty-bg-main);
+  border-top: 2px solid var(--lifty-border);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wpae-footer-add-btn {
+  width: 100%;
+  min-height: 54px;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.wpae-footer-add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}

@@ -1,0 +1,74 @@
+/* Paso 1: Nombre - Lluvia de estrellas (Sparkles) */
+
+.formStep {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--lt-spacing-sm);
+}
+
+/* Header del paso */
+.stepHeader {
+  text-align: center;
+  margin-bottom: var(--lt-spacing-md);
+}
+
+.stepQuestion {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 var(--lt-spacing-sm) 0;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--lt-accent-color) 0%,
+    var(--lt-accent-color-variant) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(120, 130, 182, 0.4));
+}
+
+/* Campo de texto */
+.textInput {
+  width: 100%;
+  max-width: 350px;
+  padding: var(--lt-spacing-md) var(--lt-spacing-lg);
+  font-size: 1.05rem;
+  background-color: var(--lt-bg-card);
+  border: 1.5px solid rgba(120, 130, 182, 0.3);
+  border-radius: 12px;
+  color: var(--lt-text-primary);
+  font-family: var(--lt-font-family);
+  font-weight: var(--lt-font-weight-medium);
+  margin: var(--lt-spacing-lg) auto 0;
+  text-align: center;
+  display: block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: var(--lt-accent-color);
+  background: var(--lt-bg-card);
+  box-shadow: 0 0 0 3px rgba(120, 130, 182, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .textInput {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepQuestion {
+    font-size: 1.5rem;
+  }
+}

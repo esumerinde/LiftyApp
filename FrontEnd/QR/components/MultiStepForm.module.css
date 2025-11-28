@@ -1,0 +1,569 @@
+/* Contenedor principal del formulario */
+.formContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0f11 0%, #1a1a1e 50%, #16161a 100%);
+  padding: var(--lt-spacing-2xl) var(--lt-spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Texto motivacional - Usa clases globales de index.css:
+   - .motivational-container
+   - .motivational-line
+   - @keyframes motivationalFade
+*/
+
+/* Barra de progreso */
+.progressBarContainer {
+  width: 100%;
+  max-width: 700px;
+  height: 8px;
+  background-color: var(--lt-accent-color-ultra-light);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: var(--lt-spacing-md);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--lt-accent-color-dark) 0%,
+    var(--lt-accent-color-variant) 100%
+  );
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(116, 123, 191, 0.5);
+}
+
+/* Indicador de paso */
+.stepIndicator {
+  color: var(--lt-text-secondary);
+  font-size: 1rem;
+  font-weight: var(--lt-font-weight-semibold);
+  margin-bottom: var(--lt-spacing-xl);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Lluvia de iconos en el fondo */
+.backgroundRain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.raindrop {
+  position: absolute;
+  top: -50px;
+  opacity: 0.4;
+  color: rgba(156, 163, 175, 0.6);
+  animation: fall linear infinite;
+  width: 48px;
+  height: 48px;
+}
+
+@keyframes fall {
+  0% {
+    top: -50px;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    top: 100vh;
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+/* Header del paso con ícono */
+.stepHeader {
+  text-align: center;
+  margin-bottom: var(--lt-spacing-lg);
+}
+
+.stepIcon {
+  color: var(--lt-accent-color);
+  margin: 0 auto var(--lt-spacing-md);
+  display: block;
+}
+
+/* Título del paso */
+.stepTitle {
+  font-size: 1.75rem;
+  color: var(--lt-text-primary);
+  text-align: center;
+  margin: 0 0 var(--lt-spacing-xl) 0;
+  font-weight: var(--lt-font-weight-bold);
+  line-height: 1.3;
+}
+
+/* Pregunta estilo motivacional */
+.stepQuestion {
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: linear-gradient(
+    135deg,
+    var(--lt-accent-color) 0%,
+    var(--lt-accent-color-variant) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 var(--lt-spacing-md) 0;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  text-align: center;
+  filter: drop-shadow(0 2px 8px rgba(120, 130, 182, 0.4));
+}
+
+.stepQuestionSub {
+  font-size: 1.2rem;
+  font-weight: var(--lt-font-weight-medium);
+  color: var(--lt-text-secondary);
+  margin: 0 0 var(--lt-spacing-xl) 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.subQuestion {
+  font-size: 1.4rem;
+  font-weight: var(--lt-font-weight-bold);
+  background: linear-gradient(
+    135deg,
+    var(--lt-accent-color) 0%,
+    var(--lt-accent-color-variant) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(120, 130, 182, 0.4));
+  text-align: center;
+  margin: var(--lt-spacing-xl) 0 var(--lt-spacing-md) 0;
+}
+
+.fitCompaLogoFloatFade {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  position: absolute;
+  animation: imageFadeInOut 5s ease-in-out, float 3s ease-in-out infinite;
+}
+
+/* Campos de texto */
+.textInput,
+.numberInput {
+  width: 100%;
+  max-width: 350px;
+  padding: var(--lt-spacing-md) var(--lt-spacing-lg);
+  font-size: 1.05rem;
+  background-color: var(--lt-bg-card);
+  border: 1.5px solid rgba(120, 130, 182, 0.3);
+  border-radius: 12px;
+  color: var(--lt-text-primary);
+  font-family: var(--lt-font-family);
+  font-weight: var(--lt-font-weight-medium);
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.textInput:focus,
+.numberInput:focus {
+  outline: none;
+  border-color: var(--lt-accent-color);
+  background: var(--lt-bg-card);
+  box-shadow: 0 0 0 3px rgba(120, 130, 182, 0.1);
+}
+
+/* Grupos de campos */
+.fieldGroup {
+  margin-bottom: var(--lt-spacing-lg);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--lt-spacing-xs);
+  color: var(--lt-small-text-color);
+  font-size: 0.95rem;
+  margin-bottom: var(--lt-spacing-sm);
+  font-weight: var(--lt-font-weight-semibold);
+}
+
+/* Grid de dos columnas */
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--lt-spacing-md);
+}
+
+/* Radio buttons estilizados */
+.radioGroup {
+  display: flex;
+  gap: var(--lt-spacing-md);
+  flex-wrap: wrap;
+}
+
+.radioGroupInline {
+  display: flex;
+  gap: var(--lt-spacing-lg);
+  justify-content: center;
+  flex-direction: row;
+}
+
+.radioLabel {
+  cursor: pointer;
+  flex: 1;
+  min-width: 120px;
+}
+
+.radioLabel input[type="radio"] {
+  display: none;
+}
+
+.radioButton {
+  display: block;
+  padding: var(--lt-spacing-md) var(--lt-spacing-lg);
+  background: var(--lt-bg-card);
+  border: 1.5px solid rgba(120, 130, 182, 0.3);
+  border-radius: 12px;
+  color: var(--lt-text-primary);
+  font-weight: var(--lt-font-weight-semibold);
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.radioLabel input[type="radio"]:checked + .radioButton {
+  background: var(--lt-accent-color-ultra-light);
+  border-color: var(--lt-accent-color);
+  color: var(--lt-black-text-color);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+}
+
+.radioButton:hover {
+  border-color: var(--lt-accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(116, 123, 191, 0.18);
+}
+
+/* Tarjetas seleccionables */
+.cardGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lt-spacing-md);
+}
+
+.cardLabel {
+  cursor: pointer;
+}
+
+.cardLabel input[type="radio"] {
+  display: none;
+}
+
+.card {
+  padding: var(--lt-spacing-lg);
+  background: var(--lt-bg-card);
+  border: 1.5px solid rgba(120, 130, 182, 0.3);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.cardLabel input[type="radio"]:checked + .card {
+  background: var(--lt-bg-hover);
+  border-color: var(--lt-accent-color);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: var(--lt-font-weight-semibold);
+  color: var(--lt-text-primary);
+  margin-bottom: var(--lt-spacing-xs);
+  transition: color 0.3s ease;
+}
+
+.cardLabel input[type="radio"]:checked + .card .cardTitle {
+  color: var(--lt-accent-color);
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: var(--lt-muted-text-color);
+  line-height: 1.4;
+}
+
+/* Logo container para paso 1 */
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto var(--lt-spacing-lg) auto;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fitCompaLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: imageFadeInOut 4s ease-in-out;
+}
+
+.fitCompaLogoFloat {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* float animation está definida en index.css como animación global */
+
+/* Contenedor de mascota - Usa clases globales de index.css */
+.mascotContainer {
+  margin-top: var(--lt-spacing-xl);
+}
+
+/* Botones de navegación */
+.buttonGroup {
+  display: flex;
+  gap: var(--lt-spacing-md);
+  margin-top: var(--lt-spacing-lg);
+  width: 100%;
+  max-width: 700px;
+  justify-content: space-between;
+}
+
+.backButton,
+.nextButton {
+  padding: var(--lt-spacing-md) var(--lt-spacing-xl);
+  font-size: 1.05rem;
+  font-weight: var(--lt-font-weight-semibold);
+  font-family: var(--lt-font-family);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lt-spacing-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.backButton {
+  background: var(--lt-bg-card);
+  color: var(--lt-text-primary);
+  border: 1.5px solid rgba(120, 130, 182, 0.3);
+  flex: 1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.backButton:active {
+  transform: scale(0.98);
+}
+
+.nextButton {
+  background: var(--lt-accent-color-ultra-light);
+  color: var(--lt-black-text-color);
+  flex: 2;
+  border: 1.5px solid var(--lt-accent-color);
+  border-radius: 8px;
+  padding: 12px 24px;
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.25);
+  justify-content: center;
+  letter-spacing: 0.2px;
+  min-width: 0;
+}
+
+.nextButton:disabled {
+  background: #f5f5f5;
+  color: var(--lt-muted-text-color);
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.nextButton:disabled:hover {
+  transform: none;
+}
+
+.nextButton:active:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.backButton:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+
+/* Desktop - Limitar tamaños máximos */
+@media (min-width: 1200px) {
+  .formContainer {
+    padding: var(--lt-spacing-2xl) var(--lt-spacing-xl);
+  }
+
+  .logoContainer {
+    width: 450px;
+    height: 450px;
+    max-width: 450px;
+  }
+
+  .stepTitle {
+    font-size: 1.75rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stepQuestion {
+    font-size: 1.8rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stepQuestionSub {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttonGroup {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cardGroup {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: var(--lt-spacing-xl) var(--lt-spacing-md);
+  }
+
+  .fitCompaLogo {
+    width: 420px !important;
+  }
+
+  .motivationalLine1 {
+    font-size: 1.75rem;
+  }
+
+  .stepTitle {
+    font-size: 1.4rem;
+  }
+
+  .textInput,
+  .numberInput {
+    max-width: 100%;
+  }
+
+  .twoColumnGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .radioGroup {
+    flex-direction: column;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .backButton,
+  .nextButton {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .loadingContainer {
+    min-height: 300px;
+  }
+
+  .spinner {
+    width: 48px;
+    height: 48px;
+  }
+
+  .sparkles {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fitCompaLogo {
+    width: 360px !important;
+  }
+
+  .motivationalLine1 {
+    font-size: 1.5rem;
+  }
+
+  .stepQuestion {
+    font-size: 1.5rem;
+  }
+
+  .stepQuestionSub {
+    font-size: 1rem;
+  }
+
+  .nextButton {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .backButton {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .buttonGroup {
+    gap: var(--lt-spacing-sm);
+  }
+}
+
+/* Animación para Steps - siempre montados pero con fade in controlado */
+.stepWrapper {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stepWrapper.visible {
+  opacity: 1;
+}

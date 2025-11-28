@@ -1,0 +1,660 @@
+/* ========================================
+   MEALS CALENDAR PAGE
+   ======================================== */
+
+.meals-calendar-page {
+  min-height: 100vh;
+  background: var(--lifty-bg-main);
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+.calendar-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ========== HEADER ========== */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.calendar-page-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.calendar-page-title svg {
+  flex-shrink: 0;
+  color: var(--lifty-accent-main);
+  stroke: var(--lifty-accent-main);
+}
+
+/* ========== CALENDAR NAVIGATION ========== */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: var(--lifty-card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--lifty-border-color);
+}
+
+.current-month {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin: 0;
+  color: var(--lifty-text-primary);
+}
+
+.nav-btn {
+  background: var(--lifty-bg-main);
+  border: 1px solid var(--lifty-border-color);
+  color: var(--lifty-text-primary);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: var(--lifty-accent-main);
+  border-color: var(--lifty-accent-main);
+  color: white;
+}
+
+/* ========== CALENDAR GRID ========== */
+.calendar-wrapper {
+  background: var(--lifty-card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--lifty-border-color);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.weekday-label {
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--lifty-text-secondary);
+  padding: 8px 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12px;
+  background: var(--lifty-bg-main);
+  border: 1px solid var(--lifty-border-color);
+  transition: all 0.2s ease;
+  padding: 8px;
+}
+
+.calendar-day.empty {
+  background: transparent;
+  border: none;
+}
+
+.calendar-day.clickable {
+  cursor: pointer;
+}
+
+.calendar-day.clickable:hover {
+  background: var(--lifty-accent-main);
+  border-color: var(--lifty-accent-main);
+  transform: translateY(-2px);
+}
+
+.calendar-day.clickable:hover .day-number {
+  color: white;
+  font-weight: 600;
+}
+
+.calendar-day.today {
+  background: var(--lifty-accent-main);
+  border-color: var(--lifty-accent-main);
+}
+
+.calendar-day.today .day-number {
+  color: white;
+  font-weight: 600;
+}
+
+.calendar-day.future {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.day-number {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--lifty-text-primary);
+  z-index: 1;
+}
+
+.day-indicator {
+  position: absolute;
+  bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Estados de cumplimiento */
+.day-indicator.complete {
+  color: #51cf66; /* Verde - Meta cumplida */
+}
+
+.day-indicator.partial {
+  color: #ffd43b; /* Amarillo - Progreso parcial */
+}
+
+.day-indicator.incomplete {
+  color: #ff6b6b; /* Rojo - Por debajo */
+}
+
+.day-indicator.no-data {
+  color: #868e96; /* Gris - Sin datos */
+  opacity: 0.4;
+}
+
+.calendar-day.today .day-indicator {
+  filter: brightness(1.2);
+}
+
+.calendar-day:not(.today):not(.future):hover .day-indicator {
+  transform: scale(1.2);
+}
+
+/* ========== LEGEND ========== */
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--lifty-card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--lifty-border-color);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--lifty-text-secondary);
+  white-space: nowrap;
+}
+
+.legend-indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lifty-border-color);
+  flex-shrink: 0;
+}
+
+.today-indicator {
+  background: var(--lifty-accent-main);
+  border-color: var(--lifty-accent-main);
+}
+
+.complete-indicator {
+  background: var(--lifty-bg-main);
+  color: #51cf66;
+  border: 1px solid #51cf66;
+}
+
+.partial-indicator {
+  background: var(--lifty-bg-main);
+  color: #ffd43b;
+  border: 1px solid #ffd43b;
+}
+
+.incomplete-indicator {
+  background: var(--lifty-bg-main);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+.no-data-indicator {
+  background: var(--lifty-bg-main);
+  color: #868e96;
+  border: 1px solid #868e96;
+  opacity: 0.5;
+}
+
+/* ========== DETAILS MODAL ========== */
+.details-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.details-modal-content {
+  background: var(--lifty-card-bg);
+  border-radius: 20px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--lifty-border-color);
+}
+
+.details-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-bottom: 1px solid var(--lifty-border-color);
+  background: var(--lifty-card-bg);
+}
+
+.details-modal-header h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin: 0;
+  color: var(--lifty-text-primary);
+  text-transform: capitalize;
+}
+
+.close-modal-btn {
+  background: var(--lifty-bg-main);
+  border: 1px solid var(--lifty-border-color);
+  color: var(--lifty-text-primary);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-modal-btn:hover {
+  background: var(--lifty-accent-main);
+  border-color: var(--lifty-accent-main);
+  color: white;
+}
+
+.details-modal-body {
+  padding: 24px;
+}
+
+.modal-loading,
+.modal-empty {
+  padding: 48px;
+  text-align: center;
+  color: var(--lifty-text-secondary);
+}
+
+.modal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ========== GOALS SECTION ========== */
+.goals-section {
+  margin-bottom: 32px;
+}
+
+.goals-section h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin: 0 0 16px 0;
+  color: var(--lifty-text-primary);
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.goal-detail-card {
+  background: var(--lifty-bg-main);
+  border: 1px solid var(--lifty-border-color);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.goal-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.goal-icon {
+  flex-shrink: 0;
+}
+
+.goal-icon.calories {
+  color: #ff6b6b;
+}
+
+.goal-icon.protein {
+  color: #4dabf7;
+}
+
+.goal-icon.carbs {
+  color: #51cf66;
+}
+
+.goal-icon.fats {
+  color: #ffd43b;
+}
+
+.goal-icon.water {
+  color: #4c9eff;
+}
+
+.goal-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lifty-text-primary);
+}
+
+.goal-detail-values {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.goal-detail-values .consumed {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--lifty-text-primary);
+}
+
+.goal-detail-values .separator {
+  font-size: 18px;
+  color: var(--lifty-text-secondary);
+  margin: 0 2px;
+}
+
+.goal-detail-values .target {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--lifty-text-secondary);
+}
+
+.goal-detail-values .unit {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  margin-left: 4px;
+}
+
+.goal-detail-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--lifty-card-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-bar-fill.calories {
+  background: linear-gradient(90deg, #ff6b6b, #ff8787);
+}
+
+.progress-bar-fill.protein {
+  background: linear-gradient(90deg, #4dabf7, #74c0fc);
+}
+
+.progress-bar-fill.carbs {
+  background: linear-gradient(90deg, #51cf66, #8ce99a);
+}
+
+.progress-bar-fill.fats {
+  background: linear-gradient(90deg, #ffd43b, #ffe066);
+}
+
+.progress-bar-fill.water {
+  background: linear-gradient(90deg, #4c9eff, #74c0fc);
+}
+
+/* ========== MEALS SECTION ========== */
+.meals-section h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin: 0 0 16px 0;
+  color: var(--lifty-text-primary);
+}
+
+.no-meals {
+  padding: 32px;
+  text-align: center;
+  color: var(--lifty-text-secondary);
+  font-style: italic;
+}
+
+.meals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meal-detail-card {
+  display: flex;
+  gap: 12px;
+  background: var(--lifty-bg-main);
+  border: 1px solid var(--lifty-border-color);
+  border-radius: 12px;
+  padding: 12px;
+  transition: all 0.2s ease;
+}
+
+.meal-detail-card:hover {
+  border-color: var(--lifty-accent-main);
+}
+
+.meal-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--lifty-card-bg);
+}
+
+.meal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meal-info {
+  flex: 1;
+}
+
+.meal-info h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--lifty-text-primary);
+}
+
+.meal-macros {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.meal-macros span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--lifty-text-secondary);
+}
+
+.meal-macros span svg {
+  color: var(--lifty-accent-main);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .calendar-page-title {
+    font-size: 24px;
+  }
+
+  .current-month {
+    font-size: 20px;
+  }
+
+  .calendar-wrapper {
+    padding: 16px;
+  }
+
+  .calendar-day {
+    padding: 4px;
+  }
+
+  .day-number {
+    font-size: 14px;
+  }
+
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details-modal-content {
+    max-height: 85vh;
+  }
+
+  .details-modal-header h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .meals-calendar-page {
+    padding: 12px;
+  }
+
+  .calendar-header {
+    margin-bottom: 20px;
+  }
+
+  .calendar-page-title {
+    font-size: 20px;
+    gap: 8px;
+  }
+
+  .calendar-page-title svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .weekday-label {
+    font-size: 12px;
+  }
+
+  .calendar-day {
+    border-radius: 8px;
+  }
+
+  .day-number {
+    font-size: 12px;
+  }
+
+  .day-indicator svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .calendar-legend {
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .legend-item {
+    font-size: 11px;
+  }
+
+  .legend-indicator {
+    width: 24px;
+    height: 24px;
+  }
+
+  .legend-indicator svg {
+    width: 10px;
+    height: 10px;
+  }
+}

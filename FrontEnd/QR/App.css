@@ -1,0 +1,5 @@
+/* App.css - Estilos globales mínimos para FitCompa */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

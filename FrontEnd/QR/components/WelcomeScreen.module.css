@@ -1,0 +1,36 @@
+/* Contenedor principal */
+.welcomeContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0f11 0%, #1a1a1e 50%, #16161a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenido central */
+.contentBox {
+  z-index: 2;
+  text-align: center;
+  padding: var(--lt-spacing-2xl);
+  max-width: 800px;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive - Mobile First */
+@media (max-width: 768px) {
+  .contentBox {
+    padding: var(--lt-spacing-lg);
+  }
+}

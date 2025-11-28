@@ -1,0 +1,125 @@
+/* ========================================
+   CHAT THEMES POPOVER
+   ======================================== */
+
+.chat-theme-picker {
+  position: relative;
+}
+
+.chat-theme-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  background: radial-gradient(
+    circle at 30% 0,
+    #ffffff,
+    var(--chat-accent, #7b83d6)
+  );
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.chat-theme-btn:hover {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.65);
+}
+
+.chat-theme-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* POPOVER */
+.chat-theme-popover {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 230px;
+  background: rgba(7, 9, 22, 0.98);
+  border-radius: 16px;
+  border: 1px solid var(--chat-accent-soft, rgba(123, 131, 214, 0.6));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+  padding: 10px 10px 8px;
+  z-index: 20;
+  animation: themePopoverIn 0.16s ease-out;
+}
+
+.chat-theme-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #e5e7ff;
+}
+
+.chat-theme-popover-header button {
+  border: none;
+  background: transparent;
+  color: #9ca3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.chat-theme-popover-header button:hover {
+  background: rgba(148, 163, 255, 0.18);
+}
+
+.chat-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.chat-theme-option {
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #e5e7ff;
+  font-size: 12px;
+  text-align: left;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.chat-theme-option:hover {
+  background: rgba(148, 163, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.chat-theme-option.active {
+  background: rgba(148, 163, 255, 0.22);
+}
+
+.chat-theme-swatch {
+  width: 34px;
+  height: 30px;
+  border-radius: 8px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.45);
+}
+
+/* ANIMACIÓN */
+@keyframes themePopoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

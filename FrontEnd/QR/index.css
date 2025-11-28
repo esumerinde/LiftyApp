@@ -1,0 +1,724 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Kanit:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Paleta principal - LIFTY DARK THEME */
+  --lt-background-color: #0f0f11;
+  --lt-big-text-color: #7882b6;
+  --lt-small-text-color: #9ca3af;
+  --lt-hover-text-menu: #9ca5d0;
+  --lt-border-color: #2a2a2e;
+  --lt-accent-color: #7882b6;
+  --lt-accent-color-dark: #5a639a;
+  --lt-accent-color-variant: #8891c4;
+  --lt-accent-color-ultra-light: #e5e7f2;
+  --lt-accent-color-variant2: #9ca5d0;
+  --lt-accent-color-variant2-dark: #7882b6;
+  --lt-accent-color-variant2-ultra-light: #e5e7f2;
+  --lt-muted-text-color: #6b7280;
+  --lt-white-text-color: #ffffff;
+  --lt-black-text-color: #16152f;
+  --lt-error-color: #ef4444;
+
+  /* Colores adicionales de Lifty */
+  --lt-bg-card: #1a1a1e;
+  --lt-bg-input: #252529;
+  --lt-bg-hover: #2a2a2e;
+  --lt-text-primary: #ffffff;
+  --lt-text-secondary: #9ca3af;
+  --lt-border-light: #3a3a3e;
+
+  /* Tipografía */
+  --lt-font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  /* Espaciado */
+  --lt-spacing-xs: 0.25rem;
+  --lt-spacing-sm: 0.5rem;
+  --lt-spacing-md: 1rem;
+  --lt-spacing-lg: 1.5rem;
+  --lt-spacing-xl: 2rem;
+  --lt-spacing-2xl: 3rem;
+  --lt-spacing-3xl: 4rem;
+
+  /* Bordes */
+  --lt-border-radius: 0.375rem;
+  --lt-border-radius-lg: 0.5rem;
+
+  /* Sombras */
+  --lt-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --lt-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --lt-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Pesos de fuente */
+  --lt-font-weight-light: 400;
+  --lt-font-weight-normal: 500;
+  --lt-font-weight-medium: 600;
+  --lt-font-weight-semibold: 700;
+  --lt-font-weight-bold: 800;
+
+  font-family: var(--lt-font-family);
+  line-height: 1.5;
+  font-weight: 500;
+
+  color-scheme: dark;
+  color: var(--lt-white-text-color);
+  background-color: var(--lt-background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--lt-background-color);
+  font-family: var(--lt-font-family);
+  color: var(--lt-white-text-color);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ============================================
+   ANIMACIONES GLOBALES
+   ============================================ */
+
+/* Animación simple Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación principal - Fade In Up (igual que WelcomeScreen) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación alternativa - Fade In Up 2 (con transición controlada por clase) */
+.fadeInUp2 {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fadeInUp2.visible {
+  opacity: 1;
+}
+
+/* Fade In Up con delay para contenido interno (igual timing que WelcomeScreen) */
+.fadeInUp2Delayed {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fadeInUp2Delayed.visible {
+  opacity: 1;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes imageFadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   GRADIENTE DE TEXTO GLOBAL
+   ============================================ */
+
+/* Gradiente principal para todos los textos destacados */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--lt-accent-color) 0%,
+    var(--lt-accent-color-variant) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   ANIMACIÓN DE TEXTO MOTIVACIONAL
+   ============================================ */
+@keyframes motivationalFade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Contenedor para textos motivacionales */
+.motivational-container {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+/* Líneas de texto motivacional con gradiente */
+.motivational-line {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 var(--lt-spacing-xs) 0;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  filter: drop-shadow(0 2px 8px rgba(120, 130, 182, 0.4));
+  animation: motivationalFade 5s ease-in-out infinite;
+  max-width: 90%;
+  background: linear-gradient(
+    135deg,
+    var(--lt-accent-color) 0%,
+    var(--lt-accent-color-variant) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.motivational-line:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   BOTÓN GLOBAL ESTILO LIFTY
+   ============================================ */
+.btn-primary {
+  background: var(--lt-accent-color-ultra-light);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 8px;
+  padding: 12px 24px;
+  min-height: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--lt-font-family);
+  color: var(--lt-black-text-color);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+  border-color: var(--lt-accent-color);
+  background: var(--lt-accent-color-variant);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled:hover {
+  transform: none;
+}
+
+/* Botón de opción - Estilo Lifty card */
+.btn-option {
+  background: var(--lt-bg-card);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--lt-font-family);
+  color: var(--lt-text-primary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lt-spacing-sm);
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+  border-color: var(--lt-accent-color);
+  background: var(--lt-bg-hover);
+}
+
+.btn-option:active {
+  transform: translateY(0);
+}
+
+.btn-option.checked {
+  background: var(--lt-accent-color-ultra-light);
+  color: var(--lt-black-text-color);
+  border-color: var(--lt-accent-color);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+}
+
+/* ============================================
+   CLASES GLOBALES PARA MASCOTAS Y LOGOS
+   ============================================ */
+
+/* Contenedor de mascota - tamaño estándar */
+.mascot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: var(--lt-spacing-xl) auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
+  max-width: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+/* Contenedor para logo grande (WelcomeScreen y pasos principales) */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Logo principal con animación float */
+.logo-main {
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  animation: float 3s ease-in-out infinite;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Imagen de mascota con animación float */
+.mascot-image {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  animation: float 3s ease-in-out infinite;
+  object-fit: contain;
+}
+
+/* Variante más grande para mascotas destacadas */
+.mascot-image-large {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  animation: float 3s ease-in-out infinite;
+  object-fit: contain;
+}
+
+/* Mascota con fade in/out (para rotaciones) */
+.mascot-image-fade {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  animation: imageFadeInOut 5s ease-in-out, float 3s ease-in-out infinite;
+  object-fit: contain;
+  position: absolute;
+}
+
+/* ============================================
+   LLUVIA DE ICONOS (SVG) - SISTEMA GLOBAL
+   ============================================ */
+
+/* Contenedor de lluvia - Fondo animado */
+.background-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Elemento que cae (gota, pesa, llama, etc.) */
+.rain-drop {
+  position: absolute;
+  top: -50px;
+  opacity: 0.15;
+  color: rgba(120, 130, 182, 0.2);
+  animation: fall linear infinite;
+  width: 48px;
+  height: 48px;
+}
+
+/* Animación de caída con rotación */
+@keyframes fall {
+  0% {
+    top: -50px;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    top: 100vh;
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+/* Variante con fade in/out más suave */
+@keyframes rain {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  90% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Para usar la animación con fade in/out */
+.rain-drop-fade {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  color: rgba(156, 163, 175, 0.7);
+  opacity: 0.5;
+  animation: rain linear infinite;
+}
+
+/* ============================================
+   ESPACIADO GLOBAL ENTRE SECCIONES
+   ============================================ */
+
+/* Espaciado entre secciones principales */
+.section-spacing {
+  margin-bottom: var(--lt-spacing-lg); /* 1.5rem = 24px */
+}
+
+.section-spacing-lg {
+  margin-bottom: 5rem; /* 80px */
+}
+
+.section-spacing-xl {
+  margin-bottom: 6rem; /* 96px */
+}
+
+/* Espaciado antes de botones */
+.button-spacing {
+  margin-top: var(--lt-spacing-2xl); /* 3rem = 48px */
+}
+
+.button-spacing-lg {
+  margin-top: 4rem; /* 64px */
+}
+
+/* Espaciado después de texto motivacional */
+.motivational-spacing {
+  margin-bottom: var(--lt-spacing-3xl); /* 4rem = 64px */
+}
+
+/* ============================================
+   TEXTO DE BIENVENIDA / TÍTULO HERO
+   ============================================ */
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 var(--lt-spacing-xl) 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  filter: drop-shadow(0 2px 12px rgba(120, 130, 182, 0.5));
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;
+  padding: 0 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--lt-accent-color) 0%,
+    var(--lt-accent-color-variant) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--lt-text-secondary);
+  text-align: center;
+  margin: 0 0 var(--lt-spacing-2xl) 0;
+  line-height: 1.4;
+  filter: drop-shadow(0 2px 8px rgba(120, 130, 182, 0.3));
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+  padding: 0 1rem;
+}
+
+/* ============================================
+   RESPONSIVE GLOBAL
+   ============================================ */
+
+/* Desktop - Limitar tamaños máximos */
+@media (min-width: 1200px) {
+  .motivational-line {
+    font-size: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .motivational-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .welcome-title {
+    font-size: 2.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .logo-main {
+    width: 450px;
+    max-width: 450px;
+  }
+
+  .btn-primary {
+    max-width: 400px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .motivational-line {
+    font-size: 1.3rem;
+  }
+
+  .motivational-container {
+    min-height: 70px;
+  }
+
+  .btn-primary {
+    padding: 1.1rem 2.5rem;
+    font-size: 1.15rem;
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .logo-main {
+    width: 240px;
+  }
+
+  .mascot-image {
+    max-width: 160px;
+  }
+
+  .mascot-image-large {
+    max-width: 220px;
+  }
+
+  .mascot-image-fade {
+    max-width: 160px;
+  }
+
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .section-spacing-lg {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-spacing-xl {
+    margin-bottom: 4.5rem;
+  }
+
+  .button-spacing-lg {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .motivational-line {
+    font-size: 1.2rem;
+  }
+
+  .motivational-container {
+    min-height: 60px;
+    padding: 0 0.5rem;
+  }
+
+  .btn-primary {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+  }
+
+  .logo-main {
+    width: 220px;
+  }
+
+  .mascot-image {
+    max-width: 140px;
+  }
+
+  .mascot-image-large {
+    max-width: 180px;
+  }
+
+  .mascot-image-fade {
+    max-width: 140px;
+  }
+
+  .welcome-title {
+    font-size: 1.75rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .section-spacing,
+  .section-spacing-lg {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-spacing-xl {
+    margin-bottom: 3rem;
+  }
+
+  .button-spacing,
+  .button-spacing-lg {
+    margin-top: 2rem;
+  }
+
+  .motivational-spacing {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Texto más grueso globalmente */
+p,
+span,
+div,
+a,
+li,
+td,
+th,
+label,
+input,
+textarea,
+button {
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+a {
+  font-weight: 600;
+}

@@ -1,0 +1,58 @@
+/* ========================================
+   MY SAVED ROUTINES
+   ======================================== */
+
+.saved-routines-header {
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.saved-routines-header .back-button {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--lifty-bg-card);
+  border: 1px solid var(--lifty-border-light);
+  color: var(--lifty-text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+@media (hover: hover) {
+  .saved-routines-header .back-button:hover {
+    background: var(--lifty-border-light);
+  }
+}
+
+.saved-routines-subtitle {
+  margin: 0;
+  color: var(--lifty-text-secondary);
+  font-size: 0.95rem;
+}
+
+.saved-routines-content {
+  padding-top: 24px;
+}
+
+.saved-routines-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 4rem 1.5rem;
+  color: var(--lifty-text-secondary);
+}
+
+.saved-routines-empty h2 {
+  margin: 0;
+  color: var(--lifty-text-primary);
+}
+
+.saved-routines-empty-icon {
+  color: var(--lifty-accent-main);
+}

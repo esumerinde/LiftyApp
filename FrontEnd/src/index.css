@@ -1,68 +1,2104 @@
+/* ========================================
+   LIFTYAPP - Variables CSS Globales
+   Mobile First | Dark Theme
+   ======================================== */
+
+/* Google Fonts - Fuentes Deportivas */
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Kanit:wght@300;400;500;600;700&display=swap");
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Colores Principales (Dark Mode) */
+  --lifty-bg-main: #0f0f11;
+  --lifty-bg-card: #1a1a1e;
+  --lifty-bg-secondary: var(--lifty-bg-card);
+  --lifty-bg-input: #252529;
+  --lifty-bg-hover: #2a2a2e;
+
+  /* Textos */
+  --lifty-text-primary: #ffffff;
+  --lifty-text-secondary: #9ca3af;
+  --lifty-text-muted: #6b7280;
+  --lifty-text-tertiary: #6b7280;
+  --lifty-black-text-color: #16152f;
+
+  /* Acentos (Violeta) */
+  --lifty-accent-main: #7882b6;
+  --lifty-accent-dark: #5a639a;
+  --lifty-accent-light: #9ca5d0;
+  --lifty-accent-ultra-light: #e5e7f2;
+  --lifty-accent-hover: #8891c4;
+  --lifty-btn-light: #e5e7f2;
+
+  /* Button Colors */
+  --lifty-btn-violet-gradient: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  --lifty-btn-dark-bg: #252529;
+  --lifty-btn-dark-border: rgba(120, 130, 182, 0.15);
+
+  /* Estados */
+  --lifty-success: #10b981;
+  --lifty-warning: #f59e0b;
+  --lifty-error: #ef4444;
+  --lifty-like-red: #ff6b6b;
+
+  /* Bordes */
+  --lifty-border: #2a2a2e;
+  --lifty-border-light: #3a3a3e;
+
+  /* Sombras */
+  --lifty-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  --lifty-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --lifty-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --lifty-shadow-glow: 0 0 20px rgba(120, 130, 182, 0.3);
+  --lifty-shadow-card: 0 6px 18px rgba(22, 21, 47, 0.06);
+  --lifty-shadow-card-hover: 0 12px 32px rgba(22, 21, 47, 0.12);
+  --lifty-shadow-button: 0 2px 4px rgba(120, 130, 182, 0.08);
+  --lifty-shadow-button-hover: 0 4px 12px rgba(120, 130, 182, 0.18);
+
+  /* Tipografía */
+  /* Cambia 'Rajdhani' por: 'Bebas Neue', 'Barlow', 'Oswald', o 'Kanit' */
+  font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  /* Optimizaciones de renderizado */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* ========================================
+   Reset y Estilos Base
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
   min-width: 320px;
   min-height: 100vh;
+  height: 100%;
+  background-color: var(--lifty-bg-main);
+  color: var(--lifty-text-primary);
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+#root {
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+a {
+  color: var(--lifty-accent-main);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--lifty-accent-light);
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   SISTEMA DE DISEÑO LIFTY
+   Clases globales reutilizables
+   ======================================== */
+
+/* ========== CARDS ========== */
+.lifty-card {
+  background: var(--lifty-bg-card);
+  border: 1px solid rgba(120, 130, 182, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: var(--lifty-shadow-card);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.lifty-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--lifty-accent-main);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .lifty-card:hover {
+    box-shadow: var(--lifty-shadow-card-hover);
+    transform: translateY(-4px);
+    border-color: rgba(120, 130, 182, 0.3);
   }
-  a:hover {
-    color: #747bff;
+
+  .lifty-card:hover::before {
+    transform: scaleX(1);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Card sin hover effects (static) */
+.lifty-card-static {
+  background: var(--lifty-bg-card);
+  border: 1px solid rgba(120, 130, 182, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--lifty-shadow-card);
+}
+
+/* ========== BOTONES GLOBALES ========== */
+
+/* Botón Principal - Fondo claro */
+.lifty-btn-primary {
+  padding: 12px 16px;
+  min-height: 50px;
+  background: var(--lifty-accent-ultra-light);
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 8px;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (hover: hover) {
+  .lifty-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+    border-color: var(--lifty-accent-main);
+    background: var(--lifty-accent-hover);
+  }
+}
+
+.lifty-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lifty-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón Principal Activo - Estado activado */
+.lifty-btn-primary-active {
+  padding: 12px 16px;
+  min-height: 50px;
+  background: linear-gradient(135deg, var(--lifty-accent-main) 0%, var(--lifty-accent-hover) 100%);
+  color: white;
+  border: 1.5px solid var(--lifty-accent-main);
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+  cursor: not-allowed;
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Botón de Eliminar - Rojo con icono blanco */
+.lifty-btn-delete {
+  padding: 12px 16px;
+  min-height: 50px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+  border: 1.5px solid #dc2626;
+  border-radius: 8px;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  min-width: 50px;
+}
+
+@media (hover: hover) {
+  .lifty-btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.35);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+}
+
+.lifty-btn-delete:active {
+  transform: translateY(0);
+}
+
+.lifty-btn-delete svg {
+  color: white;
+}
+
+/* Botón Secundario - Fondo oscuro con borde */
+.lifty-btn-secondary {
+  padding: 12px 16px;
+  min-height: 50px;
+  background: var(--lifty-bg-card);
+  color: var(--lifty-text-primary);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 8px;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (hover: hover) {
+  .lifty-btn-secondary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+    border-color: var(--lifty-accent-main);
+    background: var(--lifty-bg-hover);
+  }
+}
+
+.lifty-btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lifty-btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón de Volver/Atrás - Estilo AllExercises */
+.lifty-back-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--lifty-bg-card);
+  border: 2px solid var(--lifty-border);
+  color: var(--lifty-accent-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.lifty-back-btn:hover {
+  transform: translateX(-4px);
+  border-color: var(--lifty-accent-main);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.2);
+}
+
+/* Botón Gradiente - Con gradiente violeta */
+.lifty-btn-gradient {
+  padding: 14px 16px;
+  min-height: 50px;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(120, 130, 182, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+@media (hover: hover) {
+  .lifty-btn-gradient:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(120, 130, 182, 0.5);
+  }
+}
+
+.lifty-btn-gradient:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lifty-btn-gradient:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón Pequeño - Compacto */
+.lifty-btn-small {
+  padding: 8px 12px;
+  min-height: 36px;
+  background: var(--lifty-accent-ultra-light);
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+  width: auto;
+}
+
+@media (hover: hover) {
+  .lifty-btn-small:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+    border-color: var(--lifty-accent-main);
+    background: var(--lifty-accent-hover);
+  }
+}
+
+.lifty-btn-small:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lifty-btn-small:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón Cuadrado - Para iconos */
+.lifty-btn-square {
+  padding: 12px;
+  min-width: 48px;
+  min-height: 48px;
+  background: var(--lifty-accent-ultra-light);
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(120, 130, 182, 0.08);
+}
+
+@media (hover: hover) {
+  .lifty-btn-square:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+    border-color: var(--lifty-accent-main);
+    background: var(--lifty-accent-hover);
+  }
+}
+
+.lifty-btn-square:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lifty-btn-square:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón Chip/Filter - Estilo compacto y cuadrado */
+.lifty-btn-chip {
+  padding: 10px 8px;
+  min-height: 40px;
+  background: var(--lifty-accent-ultra-light);
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.2);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.12);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lifty-btn-chip.active {
+  background: #e8e8f0;
+  border-color: var(--lifty-accent-main);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+  transform: translateY(-1px);
+}
+
+@media (hover: hover) {
+  .lifty-btn-chip:hover:not(.active):not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+    border-color: var(--lifty-accent-main);
+  }
+}
+
+.lifty-btn-chip:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* FAB - Floating Action Button */
+.lifty-fab {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  color: white;
+  border: none;
+  border-radius: 28px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(120, 130, 182, 0.4),
+    0 4px 12px rgba(120, 130, 182, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+}
+
+@media (hover: hover) {
+  .lifty-fab:hover:not(:disabled) {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(120, 130, 182, 0.5),
+      0 6px 16px rgba(120, 130, 182, 0.4);
+  }
+}
+
+.lifty-fab:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.lifty-fab:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========== INPUTS Y FORMULARIOS ========== */
+
+/* Input estándar */
+.lifty-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--lifty-bg-input);
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  color: var(--lifty-text-primary);
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lifty-input::placeholder {
+  color: var(--lifty-text-secondary);
+}
+
+.lifty-input:focus {
+  outline: none;
+  border-color: var(--lifty-accent-main);
+  background: var(--lifty-bg-card);
+  box-shadow: 0 0 0 3px rgba(120, 130, 182, 0.1);
+}
+
+.lifty-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Input con icono a la izquierda */
+.lifty-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.lifty-input-icon-left {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--lifty-text-secondary);
+  pointer-events: none;
+}
+
+.lifty-input-wrapper .lifty-input {
+  padding-left: 44px;
+}
+
+/* Textarea */
+.lifty-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 16px;
+  background: var(--lifty-bg-input);
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  color: var(--lifty-text-primary);
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lifty-textarea::placeholder {
+  color: var(--lifty-text-secondary);
+}
+
+.lifty-textarea:focus {
+  outline: none;
+  border-color: var(--lifty-accent-main);
+  background: var(--lifty-bg-card);
+  box-shadow: 0 0 0 3px rgba(120, 130, 182, 0.1);
+}
+
+.lifty-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========== TIPOGRAFÍA ========== */
+
+/* Títulos con gradiente */
+.lifty-title-gradient {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin: 0 0 12px 0;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lifty-title-gradient-large {
+  font-size: 48px;
+}
+
+.lifty-title-gradient-small {
+  font-size: 32px;
+}
+
+/* Subtítulos */
+.lifty-subtitle {
+  font-size: 16px;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+.lifty-subtitle-large {
+  font-size: 18px;
+}
+
+/* Texto body */
+.lifty-text-body {
+  font-size: 15px;
+  color: var(--lifty-text-primary);
+  line-height: 1.5;
+}
+
+.lifty-text-secondary {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  line-height: 1.4;
+}
+
+.lifty-text-muted {
+  font-size: 13px;
+  color: var(--lifty-text-muted);
+  line-height: 1.4;
+}
+
+/* ========== SPACING UTILITIES ========== */
+
+/* Margins */
+.lifty-m-0 {
+  margin: 0;
+}
+.lifty-m-1 {
+  margin: 4px;
+}
+.lifty-m-2 {
+  margin: 8px;
+}
+.lifty-m-3 {
+  margin: 12px;
+}
+.lifty-m-4 {
+  margin: 16px;
+}
+.lifty-m-5 {
+  margin: 20px;
+}
+.lifty-m-6 {
+  margin: 24px;
+}
+.lifty-m-8 {
+  margin: 32px;
+}
+
+.lifty-mt-0 {
+  margin-top: 0;
+}
+.lifty-mt-1 {
+  margin-top: 4px;
+}
+.lifty-mt-2 {
+  margin-top: 8px;
+}
+.lifty-mt-3 {
+  margin-top: 12px;
+}
+.lifty-mt-4 {
+  margin-top: 16px;
+}
+.lifty-mt-5 {
+  margin-top: 20px;
+}
+.lifty-mt-6 {
+  margin-top: 24px;
+}
+.lifty-mt-8 {
+  margin-top: 32px;
+}
+
+.lifty-mb-0 {
+  margin-bottom: 0;
+}
+.lifty-mb-1 {
+  margin-bottom: 4px;
+}
+.lifty-mb-2 {
+  margin-bottom: 8px;
+}
+.lifty-mb-3 {
+  margin-bottom: 12px;
+}
+.lifty-mb-4 {
+  margin-bottom: 16px;
+}
+.lifty-mb-5 {
+  margin-bottom: 20px;
+}
+.lifty-mb-6 {
+  margin-bottom: 24px;
+}
+.lifty-mb-8 {
+  margin-bottom: 32px;
+}
+
+.lifty-ml-0 {
+  margin-left: 0;
+}
+.lifty-ml-1 {
+  margin-left: 4px;
+}
+.lifty-ml-2 {
+  margin-left: 8px;
+}
+.lifty-ml-3 {
+  margin-left: 12px;
+}
+.lifty-ml-4 {
+  margin-left: 16px;
+}
+
+.lifty-mr-0 {
+  margin-right: 0;
+}
+.lifty-mr-1 {
+  margin-right: 4px;
+}
+.lifty-mr-2 {
+  margin-right: 8px;
+}
+.lifty-mr-3 {
+  margin-right: 12px;
+}
+.lifty-mr-4 {
+  margin-right: 16px;
+}
+
+/* Paddings */
+.lifty-p-0 {
+  padding: 0;
+}
+.lifty-p-1 {
+  padding: 4px;
+}
+.lifty-p-2 {
+  padding: 8px;
+}
+.lifty-p-3 {
+  padding: 12px;
+}
+.lifty-p-4 {
+  padding: 16px;
+}
+.lifty-p-5 {
+  padding: 20px;
+}
+.lifty-p-6 {
+  padding: 24px;
+}
+.lifty-p-8 {
+  padding: 32px;
+}
+
+.lifty-pt-4 {
+  padding-top: 16px;
+}
+.lifty-pt-6 {
+  padding-top: 24px;
+}
+.lifty-pt-8 {
+  padding-top: 32px;
+}
+
+.lifty-pb-4 {
+  padding-bottom: 16px;
+}
+.lifty-pb-6 {
+  padding-bottom: 24px;
+}
+.lifty-pb-8 {
+  padding-bottom: 32px;
+}
+
+.lifty-px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.lifty-px-6 {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.lifty-px-8 {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.lifty-py-4 {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.lifty-py-6 {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.lifty-py-8 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* Gaps para flexbox/grid */
+.lifty-gap-1 {
+  gap: 4px;
+}
+.lifty-gap-2 {
+  gap: 8px;
+}
+.lifty-gap-3 {
+  gap: 12px;
+}
+.lifty-gap-4 {
+  gap: 16px;
+}
+.lifty-gap-5 {
+  gap: 20px;
+}
+.lifty-gap-6 {
+  gap: 24px;
+}
+
+/* ========== LAYOUT UTILITIES ========== */
+
+/* Contenedores */
+.lifty-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 24px 16px;
+}
+
+.lifty-container-wide {
+  width: 100%;
+  max-width: 1200px;
+  padding: 24px 16px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .lifty-container {
+    padding: 40px 32px;
+  }
+  .lifty-container-wide {
+    padding: 32px;
+  }
+}
+
+/* Header centrado */
+.lifty-header-centered {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Flex utilities */
+.lifty-flex {
+  display: flex;
+}
+
+.lifty-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lifty-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lifty-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lifty-flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Grid utilities */
+.lifty-grid {
+  display: grid;
+}
+
+.lifty-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.lifty-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.lifty-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* ========== ESTADOS Y EFECTOS ========== */
+
+/* Empty state */
+.lifty-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.lifty-empty-state-icon {
+  color: var(--lifty-text-secondary);
+  opacity: 0.4;
+  margin-bottom: 16px;
+}
+
+.lifty-empty-state-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--lifty-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.lifty-empty-state-text {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Loading spinner */
+.lifty-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(120, 130, 182, 0.2);
+  border-top-color: var(--lifty-accent-main);
+  border-radius: 50%;
+  animation: lifty-spin 0.8s linear infinite;
+}
+
+@keyframes lifty-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Divider */
+.lifty-divider {
+  height: 1px;
+  background: var(--lifty-border);
+  margin: 16px 0;
+}
+
+.lifty-divider-thick {
+  height: 2px;
+  background: var(--lifty-border-light);
+  margin: 24px 0;
+}
+
+/* ========================================
+   Scrollbar Personalizado
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lifty-bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lifty-bg-input);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lifty-accent-main);
+}
+
+/* ========================================
+   ALIAS / COMPONENT HELPERS (Compatibilidad)
+   Clases auxiliares usadas por componentes existentes
+   - Estas clases referencian o replican estilos del sistema
+   - Añadidas para evitar modificar múltiples componentes
+   ======================================== */
+
+/* Page wrapper (layout) */
+.lifty-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--lifty-bg-main);
+  color: var(--lifty-text-primary);
+  padding-bottom: 100px; /* espacio para bottom nav por defecto */
+}
+
+@keyframes liftyFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Simple content wrapper and spacing alias */
+.lifty-content-wrapper {
+  padding: 24px 16px;
+}
+.lifty-spacing {
+  /* helper class used as generic spacing container */
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Input icon alias (component used 'lifty-input-icon') */
+.lifty-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--lifty-text-secondary);
+  pointer-events: none;
+}
+
+/* Chip group wrapper used by Routines */
+.lifty-btn-chip-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Small compatibility aliases for buttons that components may reference */
+.lifty-btn {
+  /* generic base for lifty buttons - minimal reset so other lifty-* rules apply */
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.lifty-btn-active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+  border-color: var(--lifty-accent-main);
+}
+
+/* FAB children helpers */
+.lifty-fab-icon {
+  flex-shrink: 0;
+}
+.lifty-fab-label {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Card animation helpers referenced by RoutineCard */
+.lifty-card-animated {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lifty-card-visible {
+  transform: translateY(0);
+  opacity: 1;
+  box-shadow: var(--lifty-shadow-card-hover);
+  border-color: rgba(120, 130, 182, 0.3);
+}
+
+/* Card header / title / footer helpers */
+.lifty-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.lifty-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--lifty-accent-ultra-light);
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+  text-align: left;
+}
+.lifty-card-description {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+.lifty-card-footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Info row helpers */
+.lifty-card-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.lifty-card-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+.lifty-card-info-icon {
+  color: var(--lifty-accent-main);
+  flex-shrink: 0;
+}
+.lifty-card-info-text {
+  font-size: 13px;
+  color: var(--lifty-text-secondary);
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+
+/* ========================================
+   BADGES - Global Badge Styles
+   Difficulty and Goal badges
+   ======================================== */
+
+/* Base badge style */
+.lifty-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  min-height: 28px;
+  background: #ffffff;
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.2);
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.12);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Difficulty badges (for routines) */
+.lifty-badge-difficulty {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  min-height: 28px;
+  border: 1.5px solid rgba(120, 130, 182, 0.12);
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.12);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.lifty-badge-difficulty.fácil,
+.lifty-badge-difficulty.facil,
+.lifty-badge-difficulty.intermedio,
+.lifty-badge-difficulty.difícil,
+.lifty-badge-difficulty.dificil {
+  /* All difficulty chips use white background and dark text for visual consistency */
+  background: #ffffff;
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.12);
+}
+
+/* Goal badges (for diets/meals) */
+.lifty-badge-goal {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  min-height: 28px;
+  background: #ffffff;
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.2);
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.12);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Goal badge dark variant - estilo discreto */
+.lifty-badge-goal-dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  min-height: 28px;
+  background: var(--lifty-bg-input);
+  color: var(--lifty-text-secondary);
+  border: 1.5px solid rgba(120, 130, 182, 0.15);
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Badge dark - estilo similar al botón negro */
+.lifty-badge-dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  min-height: 28px;
+  background: var(--lifty-btn-dark-bg);
+  color: var(--lifty-text-primary);
+  border: 1.5px solid var(--lifty-btn-dark-border);
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(120, 130, 182, 0.08);
+  text-align: center;
+  text-transform: capitalize;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Truncate helpers */
+.lifty-truncate-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.lifty-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Generic button alias for components that reference lifty-btn-primary/lifty-btn-square */
+
+.lifty-btn-square {
+  /* small square icon button */
+  padding: 10px;
+  min-width: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+/* Empty state aliases (used by Routines) */
+.lifty-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+.lifty-empty-icon {
+  color: var(--lifty-text-secondary);
+  opacity: 0.4;
+  margin-bottom: 16px;
+}
+.lifty-empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--lifty-text-primary);
+  margin: 0 0 8px 0;
+}
+.lifty-empty-text {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ========================================
+   FAB ACTION BUTTON - Unified Floating Action Button
+   Used in Home (Entrenar), Meals (Comer), Routines (Crear)
+   ======================================== */
+
+.lifty-fab-action {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: var(--lifty-btn-violet-gradient);
+  color: white;
+  border: none;
+  border-radius: 28px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(120, 130, 182, 0.4),
+    0 4px 12px rgba(120, 130, 182, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+}
+
+.lifty-fab-action-icon {
+  flex-shrink: 0;
+}
+
+.lifty-fab-action-label {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+@media (hover: hover) {
+  .lifty-fab-action:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(120, 130, 182, 0.5),
+      0 6px 16px rgba(120, 130, 182, 0.4);
+  }
+}
+
+.lifty-fab-action:active {
+  transform: scale(0.98);
+}
+
+@media (min-width: 768px) {
+  .lifty-fab-action {
+    right: 32px;
+    bottom: 100px;
+    padding: 16px 24px;
+    font-size: 17px;
+  }
+}
+
+/* Legacy alias for circular FAB (Diets page uses this) */
+.fab-button {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-ultra-light) 100%
+  );
+  color: var(--lifty-text-primary);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(120, 130, 182, 0.4),
+    0 4px 12px rgba(120, 130, 182, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+}
+
+@media (hover: hover) {
+  .fab-button:hover:not(:disabled) {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(120, 130, 182, 0.5),
+      0 6px 16px rgba(120, 130, 182, 0.4);
+  }
+}
+
+.fab-button:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .fab-button {
+    right: 32px;
+    bottom: 100px;
+  }
+}
+
+/* ========================================
+   PAGE LAYOUT - Standard Page Structure
+   Global page, header, and content wrappers
+   ======================================== */
+
+/* Page wrapper - full page container */
+.lifty-page {
+  min-height: 100vh;
+  background: var(--lifty-bg-main);
+  padding-bottom: 100px; /* space for bottom nav */
+}
+
+/* Header - sticky page header */
+.lifty-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--lifty-bg-main);
+  padding: 20px 16px 16px 16px;
+  border-bottom: 1px solid var(--lifty-border);
+}
+
+/* Page title with gradient - LEFT ALIGNED */
+.lifty-page-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin: 0 0 16px 0;
+  text-align: left;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Page subtitle - LEFT ALIGNED */
+.lifty-page-subtitle {
+  font-size: 16px;
+  color: var(--lifty-text-secondary);
+  margin: 0 0 16px 0;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Content area */
+.lifty-content {
+  padding: 24px 16px;
+}
+
+@media (min-width: 768px) {
+  .lifty-header {
+    padding: 24px 32px 20px 32px;
+  }
+
+  .lifty-page-title {
+    font-size: 40px;
+  }
+
+  .lifty-content {
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* ========================================
+   SEARCH BAR - Global Search Input
+   ======================================== */
+
+.lifty-search-container {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.lifty-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--lifty-text-secondary);
+  pointer-events: none;
+}
+
+.lifty-search-input {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  background: var(--lifty-bg-input);
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  color: var(--lifty-text-primary);
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+}
+
+.lifty-search-input::placeholder {
+  color: var(--lifty-text-secondary);
+}
+
+.lifty-search-input:focus {
+  outline: none;
+  border-color: var(--lifty-accent-main);
+  background: var(--lifty-bg-card);
+  box-shadow: 0 0 0 3px rgba(120, 130, 182, 0.1);
+}
+
+/* ========================================
+   FILTER CHIPS - Global Filter Buttons
+   ======================================== */
+
+.lifty-filter-chips-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.lifty-filter-chip {
+  padding: 10px 8px;
+  min-height: 40px;
+  background: #e5e7f2;
+  color: #16152f;
+  border: 1.5px solid rgba(120, 130, 182, 0.2);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.12);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.lifty-filter-chip.active {
+  background: #e8e8f0;
+  border-color: var(--lifty-accent-main);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+  transform: translateY(-1px);
+}
+
+@media (hover: hover) {
+  .lifty-filter-chip:hover:not(.active) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.18);
+    border-color: var(--lifty-accent-main);
+  }
+}
+
+/* ========================================
+   CONTENT GRID - Global Grid Layout
+   ======================================== */
+
+.lifty-content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .lifty-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 24px;
+  }
+
+  .lifty-content-grid > * {
+    margin-bottom: 0;
+  }
+}
+
+/* ========================================
+   DIET/MEAL/ROUTINE CARD - Global Card Styling
+   Unified card styles for diet, meal, and routine cards
+   ======================================== */
+
+/* Base diet/meal card with violet top border */
+.lifty-diet-card {
+  margin-bottom: 24px;
+  background: var(--lifty-bg-card);
+  border: 1px solid rgba(120, 130, 182, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--lifty-shadow-card);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.lifty-diet-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--lifty-accent-main);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+/* Visible state (animated in) */
+.lifty-diet-card.lifty-card-visible {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: var(--lifty-shadow-card-hover);
+  border-color: rgba(120, 130, 182, 0.3);
+}
+
+.lifty-diet-card.lifty-card-visible::before {
+  transform: scaleX(1);
+}
+
+/* Card header - title and badge */
+.lifty-diet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.lifty-diet-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--lifty-accent-ultra-light);
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+  text-align: left;
+}
+
+/* Goal badge - removed, now using .lifty-badge-goal from badges section */
+
+/* Card description - LEFT ALIGNED */
+.lifty-diet-card-description {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Info row - icons + text - LEFT ALIGNED */
+.lifty-diet-card-info-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--lifty-border);
+}
+
+.lifty-diet-card-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lifty-diet-card-info-icon {
+  color: var(--lifty-accent-main);
+  flex-shrink: 0;
+}
+
+.lifty-diet-card-info-text {
+  font-size: 13px;
+  color: var(--lifty-text-secondary);
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Card footer - action buttons */
+.lifty-diet-card-footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.lifty-diet-card-footer > button {
+  flex: 1;
+}
+
+/* Primary button - violet gradient */
+.lifty-btn-primary-violet {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--lifty-btn-violet-gradient);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(120, 130, 182, 0.08);
+}
+
+/* Secondary button - dark/black style */
+.lifty-btn-secondary-dark {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 40px;
+  background: var(--lifty-btn-dark-bg);
+  color: var(--lifty-text-primary);
+  border: 1.5px solid var(--lifty-btn-dark-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(120, 130, 182, 0.08);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+@media (hover: hover) {
+  .lifty-btn-primary-violet:hover,
+  .lifty-btn-secondary-dark:hover {
+    border-color: var(--lifty-accent-main);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(120, 130, 182, 0.16);
+  }
+
+  .lifty-btn-primary-violet:hover {
+    background: linear-gradient(
+      135deg,
+      var(--lifty-accent-hover) 0%,
+      var(--lifty-accent-light) 100%
+    );
+  }
+
+  .lifty-btn-secondary-dark:hover {
+    background: var(--lifty-bg-hover);
+  }
+}
+
+/* Outline button - transparent with border */
+.lifty-btn-outline {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--lifty-accent-main);
+  border: 2px solid var(--lifty-accent-main);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lifty-btn-outline:hover {
+  background: rgba(120, 130, 182, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.2);
+}
+
+.lifty-btn-outline:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   HUB MENU - Global Hub Menu Styles
+   Used by WorkoutHub and MealHub
+   ======================================== */
+
+/* Hub page wrapper */
+.lifty-hub-page {
+  min-height: 100vh;
+  background: var(--lifty-bg-main);
+  padding-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lifty-hub-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 24px 16px;
+}
+
+/* Hub header */
+.lifty-hub-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.lifty-hub-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin: 0 0 12px 0;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lifty-hub-subtitle {
+  font-size: 16px;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Hub actions container */
+.lifty-hub-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Hub button base */
+.lifty-hub-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Hub button variants */
+.lifty-hub-btn.primary {
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  color: white;
+  border: 2px solid transparent;
+  animation-delay: 0.1s;
+}
+
+.lifty-hub-btn.secondary {
+  background: var(--lifty-bg-card);
+  color: var(--lifty-text-primary);
+  border: 2px solid var(--lifty-border);
+  animation-delay: 0.2s;
+}
+
+.lifty-hub-btn.tertiary {
+  background: var(--lifty-bg-card);
+  color: var(--lifty-text-primary);
+  border: 2px solid var(--lifty-border);
+  animation-delay: 0.3s;
+}
+
+.lifty-hub-btn.quaternary {
+  background: var(--lifty-bg-card);
+  color: var(--lifty-text-primary);
+  border: 2px solid var(--lifty-border);
+  animation-delay: 0.4s;
+}
+
+.lifty-hub-btn.quinary {
+  background: var(--lifty-bg-card);
+  color: var(--lifty-text-primary);
+  border: 2px solid var(--lifty-border);
+  animation-delay: 0.5s;
+}
+
+/* Hub button hover states */
+@media (hover: hover) {
+  .lifty-hub-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(120, 130, 182, 0.35);
+  }
+
+  .lifty-hub-btn.secondary:hover,
+  .lifty-hub-btn.tertiary:hover,
+  .lifty-hub-btn.quaternary:hover,
+  .lifty-hub-btn.quinary:hover {
+    transform: translateY(-2px);
+    border-color: var(--lifty-accent-main);
+    box-shadow: 0 8px 24px rgba(120, 130, 182, 0.2);
+  }
+
+  .lifty-hub-btn:hover .lifty-hub-btn-icon {
+    transform: scale(1.1);
+  }
+}
+
+.lifty-hub-btn:active {
+  transform: scale(0.98);
+}
+
+/* Hub button icon */
+.lifty-hub-btn-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lifty-hub-btn.primary .lifty-hub-btn-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.lifty-hub-btn.secondary .lifty-hub-btn-icon,
+.lifty-hub-btn.tertiary .lifty-hub-btn-icon,
+.lifty-hub-btn.quaternary .lifty-hub-btn-icon,
+.lifty-hub-btn.quinary .lifty-hub-btn-icon {
+  background: rgba(120, 130, 182, 0.15);
+  color: var(--lifty-accent-main);
+}
+
+/* Hub button content */
+.lifty-hub-btn-content {
+  flex: 1;
+}
+
+.lifty-hub-btn-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: inherit;
+}
+
+.lifty-hub-btn.primary .lifty-hub-btn-title {
+  color: white;
+}
+
+.lifty-hub-btn-description {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.lifty-hub-btn.primary .lifty-hub-btn-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hub animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hub responsive */
+@media (max-width: 480px) {
+  .lifty-hub-title {
+    font-size: 34px;
+  }
+
+  .lifty-hub-btn {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .lifty-hub-btn-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .lifty-hub-btn-title {
+    font-size: 16px;
+  }
+
+  .lifty-hub-btn-description {
+    font-size: 13px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+@media (min-width: 768px) {
+  .lifty-diet-card {
+    margin-bottom: 0;
+  }
+
+  .lifty-diet-card-title {
+    font-size: 20px;
+  }
+
+  .lifty-diet-card-description {
+    font-size: 15px;
   }
 }

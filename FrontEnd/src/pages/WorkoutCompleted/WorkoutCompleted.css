@@ -1,0 +1,435 @@
+/* ========================================
+   WORKOUT COMPLETED PAGE - ESTILO WORKOUT PAGE
+   ======================================== */
+
+.workout-completed-page {
+  min-height: 100vh;
+  background: var(--lifty-bg-main);
+  padding: 20px 16px 100px 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ========== HEADER ========== */
+.wc-header {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wc-back-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--lifty-bg-card);
+  border: 2px solid var(--lifty-border);
+  color: var(--lifty-accent-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.wc-back-button:hover {
+  transform: translateX(-4px);
+  border-color: var(--lifty-accent-main);
+  box-shadow: 0 4px 12px rgba(120, 130, 182, 0.2);
+}
+
+.wc-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* User info */
+.wc-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wc-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--lifty-accent-main);
+}
+
+.wc-user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wc-user-name {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lifty-text-primary);
+}
+
+.wc-user-username {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--lifty-text-secondary);
+}
+
+.wc-follow-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--lifty-accent-main);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wc-follow-btn:hover {
+  background: var(--lifty-accent-hover);
+  transform: translateY(-1px);
+}
+
+.wc-follow-btn.following {
+  background: #1a1a1a;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.wc-follow-btn.following:hover {
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.wc-follow-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.wc-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0.15em;
+  margin: 0;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wc-header-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wc-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--lifty-text-secondary);
+  font-size: 14px;
+}
+
+.wc-stat svg {
+  color: var(--lifty-accent-main);
+}
+
+/* ========== EXERCISE CARD ========== */
+.wc-exercises-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wc-exercise-card {
+  background: var(--lifty-bg-card);
+  border: 1px solid var(--lifty-border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--lifty-shadow-card);
+  transition: all 0.3s ease;
+}
+
+.wc-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(120, 130, 182, 0.08);
+}
+
+.wc-card-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid var(--lifty-border);
+}
+
+.wc-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wc-card-info h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lifty-text-primary);
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.wc-exercise-notes {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: var(--lifty-text-secondary);
+  font-style: italic;
+}
+
+/* ========== SETS TABLE ========== */
+.wc-sets-table {
+  width: 100%;
+}
+
+.wc-table-header {
+  display: grid;
+  grid-template-columns: 60px 90px 1fr 1fr 50px;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(120, 130, 182, 0.05);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.wc-table-header span {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--lifty-text-secondary);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.wc-table-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wc-set-row {
+  display: grid;
+  grid-template-columns: 60px 90px 1fr 1fr 50px;
+  gap: 8px;
+  padding: 12px;
+  background: var(--lifty-bg-main);
+  border: 1px solid var(--lifty-border);
+  border-radius: 12px;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.wc-set-row.completed {
+  background: rgba(120, 130, 182, 0.08);
+  border-color: var(--lifty-accent-main);
+}
+
+/* ========== COLUMNAS ========== */
+.wc-col-set {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+.wc-set-type {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  background: var(--lifty-text-secondary);
+}
+
+.wc-set-type-N {
+  background: var(--lifty-accent-main);
+}
+
+.wc-set-type-C {
+  background: #f59e0b;
+}
+
+.wc-set-type-D {
+  background: #ef4444;
+}
+
+.wc-set-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lifty-text-primary);
+}
+
+.wc-col-prev {
+  text-align: center;
+}
+
+.wc-prev-value {
+  font-size: 12px;
+  color: var(--lifty-text-secondary);
+}
+
+.wc-col-kg,
+.wc-col-reps {
+  text-align: center;
+}
+
+.wc-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--lifty-text-primary);
+}
+
+.wc-col-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wc-check-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  border: 2px solid var(--lifty-border);
+  color: var(--lifty-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.wc-check-icon.checked {
+  background: var(--lifty-accent-main);
+  border-color: var(--lifty-accent-main);
+  color: white;
+}
+
+/* ========== ESTADOS VACÍOS ========== */
+.wc-no-exercises,
+.wc-no-sets {
+  text-align: center;
+  color: var(--lifty-text-secondary);
+  padding: 24px;
+  font-size: 14px;
+}
+
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(120, 130, 182, 0.1);
+  border-top-color: var(--lifty-accent-main);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .wc-title {
+    font-size: 28px;
+  }
+
+  .wc-header-stats {
+    gap: 12px;
+  }
+
+  .wc-stat {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .workout-completed-page {
+    padding: 16px 12px 100px 12px;
+  }
+
+  .wc-title {
+    font-size: 24px;
+  }
+
+  .wc-table-header {
+    grid-template-columns: 50px 70px 1fr 1fr 40px;
+    padding: 6px 8px;
+  }
+
+  .wc-table-header span {
+    font-size: 10px;
+  }
+
+  .wc-set-row {
+    grid-template-columns: 50px 70px 1fr 1fr 40px;
+    padding: 10px 8px;
+  }
+
+  .wc-set-type {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .wc-set-number {
+    font-size: 13px;
+  }
+
+  .wc-prev-value {
+    font-size: 11px;
+  }
+
+  .wc-value {
+    font-size: 14px;
+  }
+
+  .wc-check-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+}

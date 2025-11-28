@@ -1,0 +1,39 @@
+/* ========================================
+   MAIN LAYOUT
+   Estructura principal de la app
+   ======================================== */
+
+.main-layout {
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--lifty-bg-main);
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 0 !important;
+  padding-top: 64px; /* Altura del TopHeader */
+  padding-bottom: 80px; /* Altura del BottomNav + margen */
+  overflow-y: auto;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .main-content {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    max-width: 1200px;
+  }
+}

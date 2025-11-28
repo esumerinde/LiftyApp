@@ -1,0 +1,226 @@
+/* ========================================
+   HOME PAGE (Feed Principal)
+   Mobile First Design
+   ======================================== */
+
+.home-page {
+  width: 100%;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Mensaje de autenticación exitosa */
+.auth-success-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: 12px 24px;
+  background: var(--lifty-accent-main);
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Hero Section */
+.home-tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: var(--lifty-bg-main);
+  border-bottom: 1px solid var(--lifty-border);
+  position: sticky;
+  top: 0px;
+  z-index: 40;
+}
+
+.home-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 14px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--lifty-text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.home-tab:hover {
+  color: var(--lifty-text-primary);
+}
+
+.home-tab span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.home-tab.active {
+  color: var(--lifty-accent-main);
+}
+
+.home-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: var(--lifty-accent-main);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+.home-hero {
+  position: relative;
+  padding: 1.25rem 1rem 1rem 1rem;
+  background: var(--lifty-bg-main);
+  border-bottom: 1px solid var(--lifty-border);
+}
+
+.home-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+  background: linear-gradient(
+    135deg,
+    var(--lifty-accent-main) 0%,
+    var(--lifty-accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-subtitle {
+  font-size: 0.875rem;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.home-feed {
+  padding: 16px;
+}
+
+/* Estado Vacío */
+.empty-feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 32px;
+  text-align: center;
+  gap: 12px;
+}
+
+.empty-icon {
+  color: var(--lifty-text-secondary);
+  opacity: 0.5;
+}
+
+.empty-feed h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lifty-text-primary);
+  margin: 0;
+}
+
+.empty-feed p {
+  font-size: 14px;
+  color: var(--lifty-text-secondary);
+  margin: 0;
+  max-width: 280px;
+}
+
+/* Loading State (para futuro) */
+.loading-feed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--lifty-bg-input);
+  border-top-color: var(--lifty-accent-main);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .home-hero {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+
+  .home-title {
+    font-size: 36px;
+  }
+
+  .home-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .home-feed {
+    padding: 24px;
+  }
+
+  .empty-feed {
+    min-height: 70vh;
+  }
+
+  .empty-feed h3 {
+    font-size: 24px;
+  }
+
+  .empty-feed p {
+    font-size: 16px;
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* ========================================
+   FLOATING ACTION BUTTON - Now using global .lifty-fab-action
+   All FAB styles moved to index.css
+   ======================================== */

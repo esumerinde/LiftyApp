@@ -1,0 +1,204 @@
+/* ========================================
+   WORKOUT PAGE ENDING
+   Página de finalización del entrenamiento
+   ======================================== */
+
+.wpe-container {
+  min-height: 100vh;
+  background: var(--lifty-bg-main, #16161a);
+  padding: 0 0 120px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.wpe-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--lifty-bg-main);
+  border-bottom: 1px solid var(--lifty-border, #2a2d3e);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.wpe-back-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  color: var(--lifty-text-main, #e4e6eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wpe-back-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.wpe-header-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--lifty-text-main, #e4e6eb);
+  margin: 0;
+}
+
+/* Form */
+.wpe-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wpe-field {
+  background: var(--lifty-bg-card, #1a1d2e);
+  border: 2px solid var(--lifty-border, #2a2d3e);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.wpe-field:focus-within {
+  border-color: var(--lifty-accent-main, #7882b6);
+}
+
+.wpe-input,
+.wpe-textarea {
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  color: var(--lifty-text-main, #e4e6eb);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.wpe-input::placeholder,
+.wpe-textarea::placeholder {
+  color: var(--lifty-text-secondary, #b8bac3);
+  opacity: 0.6;
+}
+
+.wpe-textarea {
+  resize: none;
+  line-height: 1.5;
+}
+
+/* Media Field */
+.wpe-media-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  cursor: pointer;
+  border-style: dashed;
+  transition: all 0.3s ease;
+}
+
+.wpe-media-field:hover {
+  border-color: var(--lifty-accent-main, #7882b6);
+  background: rgba(120, 130, 182, 0.05);
+}
+
+.wpe-media-icon {
+  color: var(--lifty-accent-main, #7882b6);
+  margin-bottom: 12px;
+}
+
+.wpe-media-text {
+  color: var(--lifty-accent-main, #7882b6);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Info Field */
+.wpe-info-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.wpe-info-field:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.wpe-info-icon {
+  color: var(--lifty-text-secondary, #b8bac3);
+  flex-shrink: 0;
+}
+
+.wpe-info-text {
+  color: var(--lifty-text-main, #e4e6eb);
+  font-size: 1rem;
+  flex: 1;
+}
+
+/* Actions */
+.wpe-actions {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.wpe-save-btn {
+  width: 100%;
+  min-height: 52px;
+  font-size: 1.1rem;
+}
+
+.wpe-discard-btn {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.wpe-discard-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.wpe-discard-btn:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .wpe-header {
+    padding: 12px 16px;
+  }
+
+  .wpe-header-title {
+    font-size: 1.2rem;
+  }
+
+  .wpe-form {
+    padding: 16px;
+  }
+
+  .wpe-media-field {
+    padding: 40px 16px;
+  }
+
+  .wpe-actions {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,60 @@
+/* ========================================
+   ROUTINE CARD
+   All styles now global in index.css
+   This file kept for potential card-specific overrides
+   ======================================== */
+
+/* Card-specific responsive adjustments can go here if needed */
+
+.lifty-btn-secondary-dark.saved {
+  background: var(--lifty-accent-main);
+  color: #fff;
+  border-color: transparent;
+}
+
+.lifty-btn-secondary-dark.saved:hover {
+  background: var(--lifty-accent-main-hover, var(--lifty-accent-main));
+}
+
+/* Category Badges */
+.lifty-diet-card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.lifty-badge-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  min-height: 28px;
+  background: #ffffff;
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.2);
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.12);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.lifty-badge-category.premium,
+.lifty-badge-category.trending,
+.lifty-badge-category.popular,
+.lifty-badge-category.recommended {
+  background: #ffffff;
+  color: var(--lifty-black-text-color);
+  border: 1.5px solid rgba(120, 130, 182, 0.2);
+  box-shadow: 0 2px 8px rgba(120, 130, 182, 0.12);
+}
+
+.lifty-badge-category.own-routine {
+  background: linear-gradient(135deg, var(--lifty-accent-main), var(--lifty-accent-light));
+  color: white;
+  border: none;
+  box-shadow: 0 4px 20px rgba(120, 130, 182, 0.2);
+}
