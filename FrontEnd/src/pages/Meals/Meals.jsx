@@ -740,7 +740,6 @@ const Meals = () => {
                     </div>
                     {dailyGoals && dailyGoals.water_consumed > 0 && (
                       <button
-                        className="lifty-btn-primary"
                         className="lifty-btn-secondary-dark"
                         onClick={handleResetWater}
                         title="Resetear agua consumida"
@@ -851,7 +850,6 @@ const Meals = () => {
                               </div>
                             </div>
                             <button
-                              className="lifty-btn-primary"
                               className="lifty-btn-secondary-dark"
                               onClick={() =>
                                 handleRemoveConsumedMeal(consumed.id_consumed)
